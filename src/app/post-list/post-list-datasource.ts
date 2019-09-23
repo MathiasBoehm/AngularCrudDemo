@@ -1,19 +1,39 @@
 import { DataSource } from '@angular/cdk/table';
 import { Post } from '../shared/post';
-import { Observable } from 'rxjs';
-import { MatPaginator, MatSort } from '@angular/material';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
 import { PostStoreService } from '../shared/post-store.service';
 
 export class PostListDatasource extends DataSource<Post> {
 
-    constructor(private paginator: MatPaginator, private sort: MatSort,  private postStoreService: PostStoreService) {
+    private postsSubject = new BehaviorSubject<Post[]>([]);
+    private loadingSubject = new BehaviorSubject<boolean>(false);
+    
+    public loading$ = this.loadingSubject.asObservable();
+
+    constructor(private postStoreService: PostStoreService) {
         super();
     }
     
     connect(): Observable<Post[]> {
-        return this.postStoreService.getAll();
+        return this.postsSubject.asObservable();
     }
 
-    disconnect() {}
+    disconnect() {
+        this.postsSubject.complete();
+        this.loadingSubject.complete();
+    }
 
+    loadPosts(sortField = '', sortOrder = 'asc',
+                pageNumber = 0, pageSize = 2) {
+
+        this.loadingSubject.next(true);
+
+        this.postStoreService.findPosts(sortField, sortOrder, pageNumber, pageSize)
+                    .pipe(
+                        catchError(() => of([])),
+                        finalize(() => this.loadingSubject.next(false))
+                    )
+                    .subscribe(posts => this.postsSubject.next(posts));
+    }
 }

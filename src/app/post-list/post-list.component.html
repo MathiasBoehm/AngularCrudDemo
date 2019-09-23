@@ -1,8 +1,32 @@
-<div>
-    <p>Post List</p>
-    <ul>
-        <li *ngFor="let post of posts">{{ post.title }}</li>
-    </ul>
+<div class="posts">
+    <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+    <mat-table class="posts-table mat-elevation-z8" [dataSource]="dataSource"
+        matSort matSortActive="title" matSortDirection="asc" matSortDisableClear>
+
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+            <mat-cell *matCellDef="let post">{{post.id}}</mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+            <mat-cell class="title-cell" *matCellDef="let post">{{post.title}}</mat-cell>
+    
+        </ng-container>
+    
+        <ng-container matColumnDef="author">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
+            <mat-cell class="author-cell" *matCellDef="let post">{{post.author}}</mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns" (click)="onRowClicked(row)"></mat-header-row>
+    
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    
+    </mat-table>
+
+    <mat-paginator [length]="6" [pageSize]="2"
+                   [pageSizeOptions]="[2, 4, 8]"></mat-paginator>
 </div>
-
-

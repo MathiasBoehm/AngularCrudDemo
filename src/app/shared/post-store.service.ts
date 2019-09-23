@@ -12,7 +12,7 @@ export class PostStoreService {
 
   constructor(private httpClient: HttpClient) { }
 
-  findPosts(sortField = '', sortOrder = 'asc', pageNumber: 0, pageSize: 2): Observable<Post[]> {
+  findPosts(sortField = '', sortOrder = 'asc', pageNumber = 0, pageSize = 2): Observable<Post[]> {
     return this.httpClient.get<Post[]>(`${this.api}/posts`, {
       params: new HttpParams()
         .set('_sort', sortField)
