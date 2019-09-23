@@ -1,0 +1,34 @@
+{
+    "posts" : [
+        {
+            "id" : 1,
+            "title" : "Demo Post",
+            "author" : "Andrea"
+        },
+        {
+            "id" : 2,
+            "title" : "Die Scheibe ist kaputt",
+            "author" : "Andrea"
+        },
+        {
+            "id" : 3,
+            "title" : "Sonnenschein",
+            "author" : "Mathias"
+        },
+		{
+			"id" : 4,
+			"title" : "Grüne Blumen",
+			"author" : "Mathias"
+        },
+        {
+            "id" : 5,
+            "title" : "Jenseits von Eden",
+            "author" : "John Steinbeck"
+        },
+        {
+            "id" : 6,
+            "title" : "Krieg und Frieden",
+            "author" : "Leo Tolstoi"
+        }
+    ]
+}

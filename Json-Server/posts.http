@@ -1,0 +1,21 @@
+###
+# Definitions
+@SERVICE_URL=http://localhost:3000
+
+###
+# @name getAll
+GET {{SERVICE_URL}}/posts
+
+###
+# @name getPost
+GET {{SERVICE_URL}}/posts/1
+
+###
+# @name search
+GET {{SERVICE_URL}}/posts?_sort=title&_order=desc&_start=4&_end=6
+
+
+
+###
+# @name db
+GET {{SERVICE_URL}}/db
