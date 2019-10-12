@@ -1,7 +1,7 @@
-export interface Post {
+export interface PostRaw {
     id: number;
     title: string;
     author: string,
-    created: Date;
+    created: string;
     content?: string
 }

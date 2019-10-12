@@ -4,6 +4,7 @@ import { MatPaginator, MatSort } from '@angular/material';
 import { PostListDatasource } from './post-list-datasource';
 import { tap } from 'rxjs/operators';
 import { merge } from 'rxjs';
+import { Post } from '../shared/post';
 
 @Component({
   selector: 'app-post-list',
@@ -15,13 +16,13 @@ export class PostListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   dataSource: PostListDatasource;
 
-  displayedColumns = ["id", "title", "author"];
+  displayedColumns = ["id", "title", "author", "created"];
 
   constructor(private postStoreService: PostStoreService) { }
 
   ngOnInit() {
     this.dataSource = new PostListDatasource(this.postStoreService);
-    this.dataSource.loadPosts('title', 'asc', 0, 2);
+    this.dataSource.loadPosts('title', 'asc', 0, 4);
   }
 
   ngAfterViewInit(): void {
@@ -37,7 +38,8 @@ export class PostListComponent implements OnInit, AfterViewInit {
   
 
   onRowClicked(row: any) {
-    console.log('Row clicked ' + row);
+    console.log("Created is " + typeof(row.created));
+    console.log('Row clicked ' + JSON.stringify(row));
   }
 
   loadPostsPage() {

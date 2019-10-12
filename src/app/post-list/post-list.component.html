@@ -21,12 +21,17 @@
             <mat-cell class="author-cell" *matCellDef="let post">{{post.author}}</mat-cell>
         </ng-container>
     
-        <mat-header-row *matHeaderRowDef="displayedColumns" (click)="onRowClicked(row)"></mat-header-row>
+        <ng-container matColumnDef="created">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Created</mat-header-cell>
+            <mat-cell class="created-cell" *matCellDef="let post">{{post.created | date:'mediumDate'}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     
-        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>
     
     </mat-table>
 
-    <mat-paginator [length]="6" [pageSize]="2"
+    <mat-paginator [length]="6" [pageSize]="4"
                    [pageSizeOptions]="[2, 4, 8]"></mat-paginator>
 </div>
