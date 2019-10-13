@@ -1,7 +1,7 @@
 <div *ngIf="post; else loading">
   <mat-card class="example-card">
       <mat-card-header>
-        <img mat-card-avatar src="{{post.authorImageUrl}}" alt="Photo of the Author">
+        <img mat-card-avatar src="{{post.authorImageUrl}}" alt="Photo of the Author" *ngIf="post.authorImageUrl">
         <mat-card-title>{{post.title}}</mat-card-title>
         <mat-card-subtitle>{{post.author}}</mat-card-subtitle>
       </mat-card-header>

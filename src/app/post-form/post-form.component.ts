@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, OnChanges} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import {Post} from "../shared/post";
 
 @Component({
@@ -28,13 +28,19 @@ export class PostFormComponent implements OnInit, OnChanges {
   submitForm() {
     const formValue = this.postForm.value;
     const newPost: Post = {
-      ...formValue
+      ...formValue,
+      id: this.post.id
     };
     this.submitPost.emit(newPost);
     this.postForm.reset();
   }
   
   private initForm() {
+    if (this.postForm) {
+      return;
+    }
+
+
     this.postForm = this.fb.group({
       title: ['', Validators.required],
       author: ['', Validators.required],

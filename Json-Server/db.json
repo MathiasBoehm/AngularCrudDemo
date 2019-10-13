@@ -1,52 +1,60 @@
 {
-    "posts" : [
-        {
-            "id" : 1,
-            "title" : "Demo Post",
-            "author" : "John Doe",
-            "authorImageUrl" : "https://randomuser.me/api/portraits/men/10.jpg",
-            "created" : "2019-05-01",
-            "content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
-        },
-        {
-            "id" : 2,
-            "title" : "Example Post",
-            "author" : "John Doe",
-            "authorImageUrl" : "https://randomuser.me/api/portraits/men/10.jpg",
-            "created" : "2019-04-15",
-            "content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
-        },
-        {
-            "id" : 3,
-            "title" : "Sunshine",
-            "author" : "Peter Pan",
-            "authorImageUrl" : "https://randomuser.me/api/portraits/men/30.jpg",
-            "created" : "2019-02-09",
-            "content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
-        },
-		{
-			"id" : 4,
-			"title" : "Flowers",
-            "author" : "Peter Pan",
-            "authorImageUrl" : "https://randomuser.me/api/portraits/men/30.jpg",
-            "created" : "2019-07-08",
-            "content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
-        },
-        {
-            "id" : 5,
-            "title" : "Holiday Trip",
-            "author" : "Linda Love",
-            "authorImageUrl" : "https://randomuser.me/api/portraits/women/10.jpg",
-            "created" : "2019-05-25",
-            "content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
-        },
-        {
-            "id" : 6,
-            "title" : "Sailing",
-            "author" : "Linda Love",
-            "authorImageUrl" : "https://randomuser.me/api/portraits/women/10.jpg",
-            "created" : "2019-09-10",
-            "content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
-        }
-    ]
+  "posts": [
+    {
+      "title": "Demo Post",
+      "author": "John Doe",
+      "authorImageUrl": "https://randomuser.me/api/portraits/men/11.jpg",
+      "content": "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>",
+      "id": 1,
+      "created": "Sun Oct 13 2019"
+    },
+    {
+      "title": "Example Post",
+      "author": "John Doe",
+      "authorImageUrl": "https://randomuser.me/api/portraits/men/11.jpg",
+      "content": "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>",
+      "id": 2,
+      "created": "Sun Oct 13 2019"
+    },
+    {
+      "id": 3,
+      "title": "Sunshine",
+      "author": "Peter Pan",
+      "authorImageUrl": "https://randomuser.me/api/portraits/men/30.jpg",
+      "created": "2019-02-09",
+      "content": "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
+    },
+    {
+      "id": 4,
+      "title": "Flowers",
+      "author": "Peter Pan",
+      "authorImageUrl": "https://randomuser.me/api/portraits/men/30.jpg",
+      "created": "2019-07-08",
+      "content": "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
+    },
+    {
+      "id": 5,
+      "title": "Holiday Trip",
+      "author": "Linda Love",
+      "authorImageUrl": "https://randomuser.me/api/portraits/women/10.jpg",
+      "created": "2019-05-25",
+      "content": "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
+    },
+    {
+      "id": 6,
+      "title": "Sailing",
+      "author": "Linda Love",
+      "authorImageUrl": "https://randomuser.me/api/portraits/women/10.jpg",
+      "created": "2019-09-10",
+      "content": "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
+    },
+    {
+      "title": "Peters Journey",
+      "author": "Peter Pan",
+      "authorImageUrl": "https://randomuser.me/api/portraits/women/50.jpg",
+      "content": "this is a content",
+      "id": 7,
+      "created": "Sun Oct 13 2019"
+    }
+  ]
 }

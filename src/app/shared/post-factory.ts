@@ -13,7 +13,7 @@ export class PostFactory {
     static toRaw(p: Post): PostRaw {
         return {
             ...p,
-            created: p.created.toDateString()
+            created: p.created != null ? p.created.toDateString() : new Date().toDateString()
         }
     }
 

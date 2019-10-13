@@ -24,10 +24,7 @@ export class EditPostComponent implements OnInit {
       map(params => params.get('id')),
       switchMap((id: string) => this.postStoreService.getPost(id))
     )
-    .subscribe(post => {
-      console.log('edit post ' + JSON.stringify(post));
-      this.post = post;
-    });
+    .subscribe(post => this.post = post);
   }
 
   updatePost(post: Post) {
