@@ -1,1 +1,7 @@
-<p>create-post works!</p>
+<h1>Create Post</h1>
+
+<app-post-form
+  *ngIf="post"
+  (submitPost)="createPost($event)"
+  [post]="post"
+  ></app-post-form>

@@ -1,0 +1,22 @@
+<form [formGroup]="postForm" (ngSubmit)="submitForm()" class="exampleForm">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Title" [formControl]="title">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Author" [formControl]="author">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Author Image URL" [formControl]="authorImageUrl">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Content" [formControl]="content">
+    </mat-form-field>
+
+    <button type="submit"
+        [disabled]="postForm.invalid">
+        Save
+    </button>
+</form>

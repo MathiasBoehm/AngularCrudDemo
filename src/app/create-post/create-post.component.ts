@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PostStoreService } from '../shared/post-store.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Post } from '../shared/post';
 
 @Component({
   selector: 'app-create-post',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private postStoreService: PostStoreService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+  }
+
+  createPost(post: Post) {
+    this.postStoreService.createPost(post)
+      .subscribe(() => {
+        this.router.navigate(['../posts'], { relativeTo: this.route});
+      })
   }
 
 }

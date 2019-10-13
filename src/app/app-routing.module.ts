@@ -26,11 +26,11 @@ export const routes: Routes = [
     component: ViewPostComponent
   },
   {
-    path: 'admin/posts/:id',
+    path: 'edit-post/:id',
     component: EditPostComponent
   },
   {
-    path: 'admin/posts/create',
+    path: 'create-post',
     component: CreatePostComponent
   }
 ];

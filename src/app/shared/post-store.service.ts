@@ -40,7 +40,7 @@ export class PostStoreService {
       );
   }
 
-  create(post: Post): Observable<any> {
+  createPost(post: Post): Observable<any> {
     return this.httpClient.post(`${this.api}/posts`,
       PostFactory.toRaw(post)
     ).pipe(
@@ -48,7 +48,7 @@ export class PostStoreService {
     );
   }
 
-  update(post: Post): Observable<any> {
+  updatePost(post: Post): Observable<any> {
     return this.httpClient.put(
       `${this.api}/posts/${post.id}`,
       PostFactory.toRaw(post)
@@ -57,7 +57,7 @@ export class PostStoreService {
     );
   }
 
-  delete(post: Post): Observable<any> {
+  deletePost(post: Post): Observable<any> {
     return this.httpClient.delete(`${this.api}/posts/${post.id}`)
       .pipe(
         catchError(this.errorHandler)

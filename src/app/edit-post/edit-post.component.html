@@ -1,1 +1,7 @@
-<p>edit-post works!</p>
+<h1>Edit Post</h1>
+
+<app-post-form
+  *ngIf="post"
+  (submitPost)="updatePost($event)"
+  [post]="post"
+  ></app-post-form>

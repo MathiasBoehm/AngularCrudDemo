@@ -9,6 +9,8 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
             <mat-cell *matCellDef="let post">
                 <a routerLink="/posts/{{post.id}}" routerLinkActive="active">{{post.id}}</a>
+                &nbsp;
+                <a routerLink="/edit-post/{{post.id}}" routerLinkActive="active">Edit</a>
             </mat-cell>
         </ng-container>
     
@@ -35,4 +37,7 @@
 
     <mat-paginator [length]="6" [pageSize]="4"
                    [pageSizeOptions]="[2, 4, 8]"></mat-paginator>
+
+
+    <a routerLink="/create-post" routerLinkActive="active">Create</a>
 </div>
