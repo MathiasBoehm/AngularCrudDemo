@@ -1,5 +1,5 @@
 export interface PostRaw {
-    id: number;
+    id?: number;
     title: string;
     author: string,
     created: string;

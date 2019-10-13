@@ -9,4 +9,20 @@ export class PostFactory {
             created: new Date(p.created)
         };
     }
+
+    static toRaw(p: Post): PostRaw {
+        return {
+            ...p,
+            created: p.created.toDateString()
+        }
+    }
+
+    static newPost(): Post {
+        const p: Post = {
+            title: '',
+            author: '', 
+            created: new Date()
+        }
+        return p;
+    }
 }

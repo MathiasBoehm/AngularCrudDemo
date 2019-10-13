@@ -14,8 +14,33 @@ GET {{SERVICE_URL}}/posts/1
 # @name search
 GET {{SERVICE_URL}}/posts?_sort=title&_order=desc&_start=4&_end=6
 
+###
+# @name = create
+POST {{SERVICE_URL}}/posts
+Content-Type: "application/json"
 
+{
+    "title" : "New Post",
+    "author" : "John Doe",
+    "created" : "2019-01-13"
+}
 
+###
+# @name update
+PUT {{SERVICE_URL}}/posts/7
+Content-Type: "application/json"
+
+{
+    "title" : "New Post",
+    "author" : "John Doe",
+    "created" : "2019-01-13",
+    "content" : "Some demo Content"
+}
+
+###
+# @name delete
+DELETE {{SERVICE_URL}}/posts/7
+  
 ###
 # @name db
 GET {{SERVICE_URL}}/db

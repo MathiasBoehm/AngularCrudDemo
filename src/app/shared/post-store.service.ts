@@ -31,6 +31,39 @@ export class PostStoreService {
     );
   }
 
+  getPost(id: string): Observable<Post> {
+    return this.httpClient.get<PostRaw>(`${this.api}/posts/${id}`)
+      .pipe(
+        retry(3),
+        map(rawPost => PostFactory.fromRaw(rawPost)),
+        catchError(this.errorHandler)
+      );
+  }
+
+  create(post: Post): Observable<any> {
+    return this.httpClient.post(`${this.api}/posts`,
+      PostFactory.toRaw(post)
+    ).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+  update(post: Post): Observable<any> {
+    return this.httpClient.put(
+      `${this.api}/posts/${post.id}`,
+      PostFactory.toRaw(post)
+    ).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+  delete(post: Post): Observable<any> {
+    return this.httpClient.delete(`${this.api}/posts/${post.id}`)
+      .pipe(
+        catchError(this.errorHandler)
+      );
+  }
+
 
   private errorHandler(error: HttpErrorResponse): Observable<any> {
     console.error('Error ocurred!');

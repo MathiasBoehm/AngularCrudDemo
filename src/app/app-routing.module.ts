@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PostListComponent } from './post-list/post-list.component';
+import { EditPostComponent } from './edit-post/edit-post.component';
+import { ViewPostComponent } from './view-post/view-post.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { HomeComponent } from './home/home.component';
 
 
 export const routes: Routes = [
@@ -11,7 +15,23 @@ export const routes: Routes = [
   },
   {
     path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'posts',
     component: PostListComponent
+  },
+  {
+    path: 'posts/:id',
+    component: ViewPostComponent
+  },
+  {
+    path: 'admin/posts/:id',
+    component: EditPostComponent
+  },
+  {
+    path: 'admin/posts/create',
+    component: CreatePostComponent
   }
 ];
 

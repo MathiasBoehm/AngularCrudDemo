@@ -1,0 +1,7 @@
+<div *ngIf="post; else loading">
+  <h1>{{ post.title }}</h1>
+</div>
+
+<ng-template #loading>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

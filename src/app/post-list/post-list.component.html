@@ -1,19 +1,20 @@
 <div class="posts">
-    <div class="spinner-container" *ngIf="dataSource.loading$ | async">
-        <mat-spinner></mat-spinner>
-    </div>
+    <!-- 
+        <mat-progress-bar mode="indeterminate" *ngIf="dataSource.loading$ | async"></mat-progress-bar>
+    -->
     <mat-table class="posts-table mat-elevation-z8" [dataSource]="dataSource"
         matSort matSortActive="title" matSortDirection="asc" matSortDisableClear>
 
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
-            <mat-cell *matCellDef="let post">{{post.id}}</mat-cell>
+            <mat-cell *matCellDef="let post">
+                <a routerLink="/posts/{{post.id}}" routerLinkActive="active">{{post.id}}</a>
+            </mat-cell>
         </ng-container>
     
         <ng-container matColumnDef="title">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
             <mat-cell class="title-cell" *matCellDef="let post">{{post.title}}</mat-cell>
-    
         </ng-container>
     
         <ng-container matColumnDef="author">
