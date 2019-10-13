@@ -4,42 +4,49 @@
             "id" : 1,
             "title" : "Demo Post",
             "author" : "John Doe",
+            "authorImageUrl" : "https://randomuser.me/api/portraits/men/10.jpg",
             "created" : "2019-05-01",
-            "content" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
         },
         {
             "id" : 2,
             "title" : "Example Post",
             "author" : "John Doe",
+            "authorImageUrl" : "https://randomuser.me/api/portraits/men/10.jpg",
             "created" : "2019-04-15",
-            "content" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
         },
         {
             "id" : 3,
             "title" : "Sunshine",
             "author" : "Peter Pan",
-            "created" : "2019-02-09"
+            "authorImageUrl" : "https://randomuser.me/api/portraits/men/30.jpg",
+            "created" : "2019-02-09",
+            "content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
         },
 		{
 			"id" : 4,
 			"title" : "Flowers",
-			"author" : "Peter Pan",
+            "author" : "Peter Pan",
+            "authorImageUrl" : "https://randomuser.me/api/portraits/men/30.jpg",
             "created" : "2019-07-08",
-            "content" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
         },
         {
             "id" : 5,
             "title" : "Holiday Trip",
             "author" : "Linda Love",
+            "authorImageUrl" : "https://randomuser.me/api/portraits/women/10.jpg",
             "created" : "2019-05-25",
-            "content" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
         },
         {
             "id" : 6,
             "title" : "Sailing",
             "author" : "Linda Love",
+            "authorImageUrl" : "https://randomuser.me/api/portraits/women/10.jpg",
             "created" : "2019-09-10",
-            "content" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p><ul><li>Item 1</li><li>Item 2</li></ul>"
         }
     ]
 }
