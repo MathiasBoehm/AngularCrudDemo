@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from '../shared/post';
+import { PostStoreService } from '../shared/post-store.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  posts: Post[];
+
+  constructor(private postStoreService: PostStoreService) { }
 
   ngOnInit() {
+      this.postStoreService.findPosts('title', 'desc', 0, 8)
+        .subscribe(posts => this.posts = posts)
   }
 
 }

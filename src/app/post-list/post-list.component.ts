@@ -16,13 +16,13 @@ export class PostListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   dataSource: PostListDatasource;
 
-  displayedColumns = ["id", "title", "author", "created"];
+  displayedColumns = ["id", "title", "author", "created", "actions"];
 
   constructor(private postStoreService: PostStoreService) { }
 
   ngOnInit() {
     this.dataSource = new PostListDatasource(this.postStoreService);
-    this.dataSource.loadPosts('title', 'asc', 0, 4);
+    this.dataSource.loadPosts('title', 'asc', 0, 10);
   }
 
   ngAfterViewInit(): void {
@@ -35,11 +35,12 @@ export class PostListComponent implements OnInit, AfterViewInit {
       )
       .subscribe();
   }
-  
-
-  onRowClicked(row: any) {
-    console.log("Created is " + typeof(row.created));
-    console.log('Row clicked ' + JSON.stringify(row));
+ 
+  deletePost(post: Post) {
+    if (confirm('Really delete Post?')) {
+      this.postStoreService.deletePost(post)
+        .subscribe(() => this.loadPostsPage());
+    }
   }
 
   loadPostsPage() {

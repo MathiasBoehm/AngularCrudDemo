@@ -18,19 +18,19 @@ export const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'posts',
+    path: 'admin/posts',
     component: PostListComponent
   },
   {
-    path: 'posts/:id',
+    path: 'admin/posts/:id',
     component: ViewPostComponent
   },
   {
-    path: 'edit-post/:id',
+    path: 'admin/edit-post/:id',
     component: EditPostComponent
   },
   {
-    path: 'create-post',
+    path: 'admin/create-post',
     component: CreatePostComponent
   }
 ];

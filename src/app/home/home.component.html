@@ -1,1 +1,8 @@
-<p>home works!</p>
+<div>
+    <app-view-post
+      *ngFor="let p of posts"
+      [post]="p"></app-view-post>
+  
+    <p *ngIf="posts && !posts.length">No posts available</p>
+  </div>
+  

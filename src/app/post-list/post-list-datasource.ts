@@ -25,7 +25,7 @@ export class PostListDatasource extends DataSource<Post> {
     }
 
     loadPosts(sortField = '', sortOrder = 'asc',
-                pageNumber = 0, pageSize = 4) {
+                pageNumber = 0, pageSize = 10) {
 
         this.loadingSubject.next(true);
 

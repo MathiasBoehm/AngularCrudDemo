@@ -6,9 +6,9 @@
     </mat-toolbar-row>
     <mat-toolbar-row>
         <div>
-            <button routerLink="home" mat-button>Home</button>
-            <button routerLink="posts" mat-button>Posts</button>
+            <a routerLink="/home" routerLinkActive="active" mat-button>Home</a>
+            <a routerLink="/admin/posts" mat-button>Posts</a>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<router-outlet style="margin-top: 80px;"></router-outlet>

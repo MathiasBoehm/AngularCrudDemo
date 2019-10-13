@@ -26,7 +26,7 @@ export class CreatePostComponent implements OnInit {
   createPost(post: Post) {
     this.postStoreService.createPost(post)
       .subscribe(() => {
-        this.router.navigate(['../../posts'], { relativeTo: this.route});
+        this.router.navigate(['/admin/posts']);
       })
   }
 

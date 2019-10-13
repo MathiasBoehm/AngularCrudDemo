@@ -16,6 +16,7 @@ import { ViewPostComponent } from './view-post/view-post.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
+import { BackButtonDirective } from './shared/back-button-directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MaterialModule } from './material.module';
     EditPostComponent,
     HomeComponent,
     ViewPostComponent,
-    PostFormComponent
+    PostFormComponent,
+    BackButtonDirective
   ],
   imports: [
     BrowserModule,
