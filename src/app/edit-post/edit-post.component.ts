@@ -30,7 +30,7 @@ export class EditPostComponent implements OnInit {
   updatePost(post: Post) {
     this.postStoreService.updatePost(post)
       .subscribe(() => {
-        this.router.navigate(['../posts'], { relativeTo: this.route });
+        this.router.navigate(['/admin/posts'], { relativeTo: this.route });
       });
   }
 }
