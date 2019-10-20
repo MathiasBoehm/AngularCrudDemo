@@ -10,6 +10,7 @@ export class PostListDatasource extends DataSource<Post> {
     private loadingSubject = new BehaviorSubject<boolean>(false);
     
     public loading$ = this.loadingSubject.asObservable();
+    public totalCount: number;
 
     constructor(private postStoreService: PostStoreService) {
         super();
@@ -29,6 +30,8 @@ export class PostListDatasource extends DataSource<Post> {
 
         this.loadingSubject.next(true);
 
+        this.postStoreService.countPosts().subscribe(count => this.totalCount = count);
+        
         this.postStoreService.findPosts(sortField, sortOrder, pageNumber, pageSize)
                     .pipe(
                         catchError(() => of([])),

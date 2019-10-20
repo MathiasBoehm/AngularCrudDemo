@@ -69,14 +69,6 @@
       "authorImageUrl": "https://randomuser.me/api/portraits/men/30.jpg",
       "created": "Sat Oct 19 2019",
       "id": 7
-    },
-    {
-      "title": "This is a journey",
-      "author": "Peter Pan",
-      "content": "Here comes th sun",
-      "authorImageUrl": "https://randomuser.me/api/portraits/men/30.jpg",
-      "created": "Sun Oct 20 2019",
-      "id": 8
     }
   ]
 }

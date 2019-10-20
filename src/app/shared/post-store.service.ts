@@ -15,13 +15,30 @@ export class PostStoreService {
 
   constructor(private httpClient: HttpClient) { }
 
-  findPosts(sortField = '', sortOrder = 'asc', pageNumber = 0, pageSize = 2): Observable<Post[]> {
+  countPosts(): Observable<number> {
+    return this.httpClient.get<any>(`${this.api}/posts`, {
+      observe: 'response',
+      params: new HttpParams()
+        .set('_sort', '')
+        .set('_order', 'asc')
+        .set('_start', '0')
+        .set('_end', '0'),
+    }).pipe(
+      retry(3),
+      map(resp => Number.parseInt(resp.headers.get('X-Total-Count'))),
+      catchError(this.errorHandler)
+    );
+  }
+
+  findPosts(sortField = '', sortOrder = 'asc', pageNumber = 0, pageSize = 10): Observable<Post[]> {
+    const start = pageNumber * pageSize;
+    const end = (pageNumber + 1) * pageSize;
     return this.httpClient.get<PostRaw[]>(`${this.api}/posts`, {
       params: new HttpParams()
         .set('_sort', sortField)
         .set('_order', sortOrder)
-        .set('_start', pageNumber.toString())
-        .set('_end', (pageNumber + pageSize).toString())
+        .set('_start', start.toString())
+        .set('_end', end.toString())
     }).pipe(
       retry(3),
       map(rawPosts => 

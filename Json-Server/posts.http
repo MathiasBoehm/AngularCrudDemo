@@ -15,6 +15,10 @@ GET {{SERVICE_URL}}/posts/1
 GET {{SERVICE_URL}}/posts?_sort=title&_order=desc&_start=4&_end=6
 
 ###
+# @name simulateCount
+GET {{SERVICE_URL}}/posts?_sort=title&_order=desc&_start=0&_end=0
+
+###
 # @name = create
 POST {{SERVICE_URL}}/posts
 Content-Type: "application/json"
