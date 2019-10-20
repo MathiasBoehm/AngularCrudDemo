@@ -4,9 +4,7 @@
 
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
-            <mat-cell *matCellDef="let post">
-                <a routerLink="/admin/edit-post/{{post.id}}">{{post.id}}</a>
-            </mat-cell>
+            <mat-cell *matCellDef="let post">{{post.id}}</mat-cell>
         </ng-container>
     
         <ng-container matColumnDef="title">
@@ -27,8 +25,14 @@
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell class="created-cell" *matCellDef="let post">
+                <a routerLink="/admin/edit-post/{{post.id}}" mat-button>
+                    <mat-icon>edit</mat-icon>
+                    Edit
+                </a>
+
                 <button mat-button
                     (click)="deletePost(post)">
+                    <mat-icon>delete</mat-icon>
                     Delete
                 </button>
             </mat-cell>
@@ -44,5 +48,8 @@
                    [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
 
 
-    <a routerLink="/admin/create-post" mat-button>Create</a>
+    <a routerLink="/admin/create-post" mat-button>
+        <mat-icon>add</mat-icon>Create
+    </a>
+
 </div>
