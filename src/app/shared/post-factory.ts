@@ -11,9 +11,11 @@ export class PostFactory {
     }
 
     static toRaw(p: Post): PostRaw {
+        const d = p.created != null ? p.created : new Date();
+        const created = d.toISOString().split('T')[0];
         return {
             ...p,
-            created: p.created != null ? p.created.toDateString() : new Date().toDateString()
+            created: created
         }
     }
 
