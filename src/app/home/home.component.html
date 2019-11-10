@@ -2,12 +2,12 @@
   fxLayout.lt-sm="column" 
   fxLayoutGap="32px grid" 
   fxLayoutAlign="start">
-    <app-view-post
+    <app-post-detail
       fxFlex="0 1 calc(33.3% - 32px)"
       fxFlex.lt-md="0 1 calc(50% - 32px)"
       fxFlex.lt-sm="100%"
       *ngFor="let p of posts"
-      [post]="p"></app-view-post>
+      [post]="p"></app-post-detail>
   
     <p *ngIf="posts && !posts.length">No posts available</p>
 </div>

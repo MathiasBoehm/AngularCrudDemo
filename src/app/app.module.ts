@@ -12,7 +12,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { HomeComponent } from './home/home.component';
-import { ViewPostComponent } from './view-post/view-post.component';
+import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
@@ -25,7 +25,7 @@ import { BackButtonDirective } from './shared/back-button-directive';
     CreatePostComponent,
     EditPostComponent,
     HomeComponent,
-    ViewPostComponent,
+    PostDetailComponent,
     PostFormComponent,
     BackButtonDirective
   ],
