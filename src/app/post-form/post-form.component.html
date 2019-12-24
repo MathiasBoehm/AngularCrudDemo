@@ -17,9 +17,11 @@
         </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="form-element">
-        <textarea matInput placeholder="Content" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" formControlName="content"></textarea>
-    </mat-form-field>
+    <div class="form-element">
+        <quill-editor [styles]="editorStyle" placeholder="Enter Text" [modules]="config"
+            formControlName="content">
+        </quill-editor>
+    </div>
 
     <div class="form-element">
         <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!postForm.valid">Submit Form</button>

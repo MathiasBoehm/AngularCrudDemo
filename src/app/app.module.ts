@@ -18,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { BackButtonDirective } from './shared/back-button-directive';
 
+import { QuillModule } from 'ngx-quill';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,8 @@ import { BackButtonDirective } from './shared/back-button-directive';
     ReactiveFormsModule, 
     LayoutModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    QuillModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

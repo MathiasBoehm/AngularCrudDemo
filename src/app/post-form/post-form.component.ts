@@ -15,6 +15,10 @@ export class PostFormComponent implements OnInit, OnChanges {
 
   postForm: FormGroup;
 
+  editorStyle = {
+    height: '200px'
+  };
+
   @Input() post: Post;
   @Output() submitPost = new EventEmitter<Post>();
 
