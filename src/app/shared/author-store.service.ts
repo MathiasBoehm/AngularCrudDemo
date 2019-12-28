@@ -9,7 +9,7 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class AuthorStoreService {
 
-  private api = 'http://localhost:3000'
+  private api = 'http://localhost:9090'
 
   constructor(private httpClient: HttpClient) { }
   

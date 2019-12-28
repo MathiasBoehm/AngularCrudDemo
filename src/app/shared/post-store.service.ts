@@ -11,21 +11,14 @@ import { PostRaw } from './post-raw';
 })
 export class PostStoreService {
 
-  private api = 'http://localhost:3000'
+  private api = 'http://localhost:9090'
 
   constructor(private httpClient: HttpClient) { }
 
   countPosts(): Observable<number> {
-    return this.httpClient.get<any>(`${this.api}/posts`, {
-      observe: 'response',
-      params: new HttpParams()
-        .set('_sort', '')
-        .set('_order', 'asc')
-        .set('_start', '0')
-        .set('_end', '0'),
-    }).pipe(
+    return this.httpClient.get<Number>(`${this.api}/posts/count`)
+    .pipe(
       retry(3),
-      map(resp => Number.parseInt(resp.headers.get('X-Total-Count'))),
       catchError(this.errorHandler)
     );
   }
@@ -37,8 +30,8 @@ export class PostStoreService {
       params: new HttpParams()
         .set('_sort', sortField)
         .set('_order', sortOrder)
-        .set('_start', start.toString())
-        .set('_end', end.toString())
+        .set('_page', pageNumber.toString())
+        .set('_size', pageSize.toString())
     }).pipe(
       retry(3),
       map(rawPosts => 
