@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../shared/post';
-import { PostStoreService } from '../shared/post-store.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
+import { Post } from '../shared/post';
+import { PostsService } from '../shared/posts-service';
 
 @Component({
   selector: 'app-edit-post',
@@ -14,7 +14,7 @@ export class EditPostComponent implements OnInit {
   post: Post;
 
   constructor(
-    private postStoreService: PostStoreService,
+    private postsService: PostsService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -22,13 +22,13 @@ export class EditPostComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.pipe(
       map(params => params.get('id')),
-      switchMap((id: string) => this.postStoreService.getPost(id))
+      switchMap((id: string) => this.postsService.getPost(id))
     )
     .subscribe(post => this.post = post);
   }
 
   updatePost(post: Post) {
-    this.postStoreService.updatePost(post)
+    this.postsService.updatePost(post)
       .subscribe(() => {
         this.router.navigate(['/admin/posts'], { relativeTo: this.route });
       });

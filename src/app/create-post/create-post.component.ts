@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PostStoreService } from '../shared/post-store.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../shared/post';
 import { PostFactory } from '../shared/post-factory';
+import { PostsService } from '../shared/posts-service';
 
 @Component({
   selector: 'app-create-post',
@@ -14,7 +14,7 @@ export class CreatePostComponent implements OnInit {
   post: Post;
 
   constructor(
-    private postStoreService: PostStoreService,
+    private postsService: PostsService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -24,7 +24,7 @@ export class CreatePostComponent implements OnInit {
   }
 
   createPost(post: Post) {
-    this.postStoreService.createPost(post)
+    this.postsService.createPost(post)
       .subscribe(() => {
         this.router.navigate(['/admin/posts']);
       })

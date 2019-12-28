@@ -1,24 +1,38 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { Post } from './post';
+import { Injectable } from "@angular/core";
+import { PostsService } from "./posts-service";
+import { Author } from "./author";
+import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http";
+import { Observable, throwError } from "rxjs";
+import { retry, catchError, map } from "rxjs/operators";
 import { PostFactory } from './post-factory';
-import { retry, map, catchError } from 'rxjs/operators';
+import { Post } from './post';
 import { PostRaw } from './post-raw';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class PostStoreService {
+@Injectable()
+export class MockPostsService extends PostsService {
+  private api = "http://localhost:3000";
 
-  private api = 'http://localhost:9090'
+  constructor(private httpClient: HttpClient) {
+    super();
+  }
 
-  constructor(private httpClient: HttpClient) { }
+  getAuthors(): Observable<Author[]> {
+    return this.httpClient
+      .get<Author[]>(`${this.api}/authors`)
+      .pipe(retry(3), catchError(this.errorHandler));
+  }
 
   countPosts(): Observable<number> {
-    return this.httpClient.get<Number>(`${this.api}/posts/count`)
-    .pipe(
+    return this.httpClient.get<any>(`${this.api}/posts`, {
+      observe: 'response',
+      params: new HttpParams()
+        .set('_sort', '')
+        .set('_order', 'asc')
+        .set('_start', '0')
+        .set('_end', '0'),
+    }).pipe(
       retry(3),
+      map(resp => Number.parseInt(resp.headers.get('X-Total-Count'))),
       catchError(this.errorHandler)
     );
   }
@@ -30,8 +44,8 @@ export class PostStoreService {
       params: new HttpParams()
         .set('_sort', sortField)
         .set('_order', sortOrder)
-        .set('_page', pageNumber.toString())
-        .set('_size', pageSize.toString())
+        .set('_start', start.toString())
+        .set('_end', end.toString())
     }).pipe(
       retry(3),
       map(rawPosts => 
@@ -74,9 +88,8 @@ export class PostStoreService {
       );
   }
 
-
   private errorHandler(error: HttpErrorResponse): Observable<any> {
-    console.error('Error ocurred!');
+    console.error("Error ocurred!");
     return throwError(error);
   }
 }

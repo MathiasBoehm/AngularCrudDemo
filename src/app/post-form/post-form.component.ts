@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output, OnChanges} from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import {Post} from "../shared/post";
-import { AuthorStoreService } from '../shared/author-store.service';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Author } from '../shared/author';
+import { Post } from "../shared/post";
+import { PostsService } from '../shared/posts-service';
 
 @Component({
   selector: 'app-post-form',
@@ -22,10 +22,10 @@ export class PostFormComponent implements OnInit, OnChanges {
   @Input() post: Post;
   @Output() submitPost = new EventEmitter<Post>();
 
-  constructor(private fb: FormBuilder, private authoreStoreService: AuthorStoreService) { }
+  constructor(private fb: FormBuilder, private postsService: PostsService) { }
 
   ngOnInit() {
-    this.authoreStoreService.getAll().subscribe(authors => this.authors = authors);
+    this.postsService.getAuthors().subscribe(authors => this.authors = authors);
     this.initForm();
   }
 

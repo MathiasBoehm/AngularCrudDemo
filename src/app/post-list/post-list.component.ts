@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { PostStoreService } from '../shared/post-store.service';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
-import { PostListDatasource } from './post-list-datasource';
-import { tap } from 'rxjs/operators';
 import { merge } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Post } from '../shared/post';
+import { PostsService } from '../shared/posts-service';
+import { PostListDatasource } from './post-list-datasource';
 
 @Component({
   selector: 'app-post-list',
@@ -18,10 +18,10 @@ export class PostListComponent implements OnInit, AfterViewInit {
 
   displayedColumns = ["id", "title", "author", "created", "actions"];
 
-  constructor(private postStoreService: PostStoreService) { }
+  constructor(private postsService: PostsService) { }
 
   ngOnInit() {
-    this.dataSource = new PostListDatasource(this.postStoreService);
+    this.dataSource = new PostListDatasource(this.postsService);
     this.dataSource.loadPosts('title', 'asc', 0, 10);
   }
 
@@ -38,7 +38,7 @@ export class PostListComponent implements OnInit, AfterViewInit {
  
   deletePost(post: Post) {
     if (confirm('Really delete Post?')) {
-      this.postStoreService.deletePost(post)
+      this.postsService.deletePost(post)
         .subscribe(() => this.loadPostsPage());
     }
   }

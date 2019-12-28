@@ -19,6 +19,8 @@ import { MaterialModule } from './material.module';
 import { BackButtonDirective } from './shared/back-button-directive';
 
 import { QuillModule } from 'ngx-quill';
+import { PostsService } from './shared/posts-service';
+import { RealPostsService } from './shared/real-posts-service';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { QuillModule } from 'ngx-quill';
     FlexLayoutModule,
     QuillModule.forRoot()
   ],
-  providers: [],
+  providers: [{provide: PostsService, useClass: RealPostsService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

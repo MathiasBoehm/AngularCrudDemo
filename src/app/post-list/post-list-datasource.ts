@@ -1,8 +1,8 @@
 import { DataSource } from '@angular/cdk/table';
-import { Post } from '../shared/post';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
-import { PostStoreService } from '../shared/post-store.service';
+import { Post } from '../shared/post';
+import { PostsService } from '../shared/posts-service';
 
 export class PostListDatasource extends DataSource<Post> {
 
@@ -12,7 +12,7 @@ export class PostListDatasource extends DataSource<Post> {
     public loading$ = this.loadingSubject.asObservable();
     public totalCount: number;
 
-    constructor(private postStoreService: PostStoreService) {
+    constructor(private postsService: PostsService) {
         super();
     }
     
@@ -30,9 +30,9 @@ export class PostListDatasource extends DataSource<Post> {
 
         this.loadingSubject.next(true);
 
-        this.postStoreService.countPosts().subscribe(count => this.totalCount = count);
+        this.postsService.countPosts().subscribe(count => this.totalCount = count);
         
-        this.postStoreService.findPosts(sortField, sortOrder, pageNumber, pageSize)
+        this.postsService.findPosts(sortField, sortOrder, pageNumber, pageSize)
                     .pipe(
                         catchError(() => of([])),
                         finalize(() => this.loadingSubject.next(false))
