@@ -14,10 +14,19 @@ import { PostRaw } from "./post-raw";
 
 @Injectable()
 export class RealPostsService extends PostsService {
-  private api = "http://localhost:9090";
 
+  private api = "http://localhost:9090/api";
+  
+  private publicApi = "http://localhost:9090/public";  
+  
   constructor(private httpClient: HttpClient) {
     super();
+  }
+
+  getAllPosts(): Observable<Post[]> {
+    return this.httpClient
+      .get<Author[]>(`${this.publicApi}/posts`)
+      .pipe(retry(3), catchError(this.errorHandler));
   }
 
   getAuthors(): Observable<Author[]> {

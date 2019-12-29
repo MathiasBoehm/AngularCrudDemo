@@ -6,6 +6,8 @@ import { Post } from './post';
 @Injectable()
 export abstract class PostsService {
 
+    abstract getAllPosts(): Observable<Post[]>;
+
     abstract getAuthors(): Observable<Author[]>;
 
     abstract countPosts(): Observable<number>;
@@ -19,4 +21,5 @@ export abstract class PostsService {
     abstract updatePost(post: Post): Observable<any>
     
     abstract deletePost(post: Post): Observable<any>;
+
 }

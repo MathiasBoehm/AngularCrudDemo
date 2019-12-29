@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private postsService: PostsService) { }
 
   ngOnInit() {
-      this.postsService.findPosts('title', 'desc', 0, 8)
+      this.postsService.getAllPosts()
         .subscribe(posts => this.posts = posts)
   }
 

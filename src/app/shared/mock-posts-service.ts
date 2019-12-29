@@ -16,6 +16,12 @@ export class MockPostsService extends PostsService {
     super();
   }
 
+  getAllPosts(): Observable<Post[]> {
+    return this.httpClient
+      .get<Author[]>(`${this.api}/posts`)
+      .pipe(retry(3), catchError(this.errorHandler));
+  }
+
   getAuthors(): Observable<Author[]> {
     return this.httpClient
       .get<Author[]>(`${this.api}/authors`)
