@@ -22,6 +22,8 @@ import { QuillModule } from 'ngx-quill';
 import { PostsService } from './shared/posts-service';
 import { RealPostsService } from './shared/real-posts-service';
 
+import { OAuthModule } from 'angular-oauth2-oidc';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,12 @@ import { RealPostsService } from './shared/real-posts-service';
     LayoutModule,
     MaterialModule,
     FlexLayoutModule,
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: ['http://localhost:9090/api'], sendAccessToken: true
+      }
+    })
   ],
   providers: [{provide: PostsService, useClass: RealPostsService}],
   bootstrap: [AppComponent]

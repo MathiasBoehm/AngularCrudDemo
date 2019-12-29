@@ -2,6 +2,14 @@
     <mat-toolbar-row>
         <span>Angular CRUD Demo</span>
         <span class="example-spacer"></span>
+        <div>
+            <button *ngIf="!name" mat-button (click)="login()">
+                Login
+            </button>
+            <button *ngIf="name" mat-button (click)="logout()">
+                Logout ({{ name }})
+            </button>
+        </div>
         <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
     </mat-toolbar-row>
     <mat-toolbar-row>
