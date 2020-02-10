@@ -4,6 +4,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { HomeComponent } from './home/home.component';
+import { LoginGuard } from './login-guard';
 
 
 export const routes: Routes = [
@@ -18,15 +19,18 @@ export const routes: Routes = [
   },
   {
     path: 'admin/posts',
-    component: PostListComponent
+    component: PostListComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'admin/edit-post/:id',
-    component: EditPostComponent
+    component: EditPostComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'admin/create-post',
-    component: CreatePostComponent
+    component: CreatePostComponent,
+    canActivate: [LoginGuard]
   }
 ];
 
