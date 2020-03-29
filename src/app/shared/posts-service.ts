@@ -6,13 +6,15 @@ import { Post } from './post';
 @Injectable()
 export abstract class PostsService {
 
+    abstract getRecentPosts(): Observable<Post[]>;
+
     abstract getAllPosts(): Observable<Post[]>;
 
     abstract getAuthors(): Observable<Author[]>;
 
-    abstract countPosts(): Observable<number>;
+    abstract countPosts(title: string, author: string): Observable<number>;
 
-    abstract findPosts(sortField: string, sortOrder: string, pageNumber: number, pageSize: number): Observable<Post[]>;
+    abstract findPosts(title: string, author: string, sortField: string, sortOrder: string, pageNumber: number, pageSize: number): Observable<Post[]>;
     
     abstract getPost(id: string): Observable<Post>;
     

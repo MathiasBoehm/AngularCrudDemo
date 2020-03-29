@@ -16,6 +16,12 @@ export class MockPostsService extends PostsService {
     super();
   }
 
+  getRecentPosts(): Observable<Post[]> {
+    return this.httpClient
+      .get<Author[]>(`${this.api}/posts`)
+      .pipe(retry(3), catchError(this.errorHandler));
+  }
+  
   getAllPosts(): Observable<Post[]> {
     return this.httpClient
       .get<Author[]>(`${this.api}/posts`)
@@ -28,10 +34,12 @@ export class MockPostsService extends PostsService {
       .pipe(retry(3), catchError(this.errorHandler));
   }
 
-  countPosts(): Observable<number> {
+  countPosts(title = '', author = ''): Observable<number> {
     return this.httpClient.get<any>(`${this.api}/posts`, {
       observe: 'response',
       params: new HttpParams()
+        .set('title', title)
+        .set('author', author)
         .set('_sort', '')
         .set('_order', 'asc')
         .set('_start', '0')
@@ -43,11 +51,13 @@ export class MockPostsService extends PostsService {
     );
   }
 
-  findPosts(sortField = '', sortOrder = 'asc', pageNumber = 0, pageSize = 10): Observable<Post[]> {
+  findPosts(title = '', author = '', sortField = '', sortOrder = 'asc', pageNumber = 0, pageSize = 10): Observable<Post[]> {
     const start = pageNumber * pageSize;
     const end = (pageNumber + 1) * pageSize;
     return this.httpClient.get<PostRaw[]>(`${this.api}/posts`, {
       params: new HttpParams()
+        .set('title', title)
+        .set('author', author)
         .set('_sort', sortField)
         .set('_order', sortOrder)
         .set('_start', start.toString())

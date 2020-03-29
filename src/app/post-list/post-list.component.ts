@@ -23,7 +23,7 @@ export class PostListComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.dataSource = new PostListDatasource(this.postsService);
-    this.dataSource.loadPosts('title', 'asc', 0, 10);
+    this.dataSource.loadPosts('', '', 'title', 'asc', 0, 10);
   }
 
   ngAfterViewInit(): void {
@@ -46,6 +46,8 @@ export class PostListComponent implements OnInit, AfterViewInit {
 
   loadPostsPage() {
     this.dataSource.loadPosts(
+      '',
+      '',
       this.sort.active, 
       this.sort.direction, 
       this.paginator.pageIndex,

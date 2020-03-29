@@ -25,14 +25,14 @@ export class PostListDatasource extends DataSource<Post> {
         this.loadingSubject.complete();
     }
 
-    loadPosts(sortField = '', sortOrder = 'asc',
+    loadPosts(title = '', author = '', sortField = '', sortOrder = 'asc',
                 pageNumber = 0, pageSize = 10) {
 
         this.loadingSubject.next(true);
 
-        this.postsService.countPosts().subscribe(count => this.totalCount = count);
+        this.postsService.countPosts(title, author).subscribe(count => this.totalCount = count);
         
-        this.postsService.findPosts(sortField, sortOrder, pageNumber, pageSize)
+        this.postsService.findPosts(title, author, sortField, sortOrder, pageNumber, pageSize)
                     .pipe(
                         catchError(() => of([])),
                         finalize(() => this.loadingSubject.next(false))

@@ -23,6 +23,12 @@ export class RealPostsService extends PostsService {
     super();
   }
 
+  getRecentPosts(): Observable<Post[]> {
+    return this.httpClient
+      .get<Author[]>(`${this.publicApi}/recent-posts`)
+      .pipe(retry(3), catchError(this.errorHandler));
+  }
+
   getAllPosts(): Observable<Post[]> {
     return this.httpClient
       .get<Author[]>(`${this.publicApi}/posts`)
@@ -35,13 +41,19 @@ export class RealPostsService extends PostsService {
       .pipe(retry(3), catchError(this.errorHandler));
   }
 
-  countPosts(): Observable<number> {
+  countPosts(title = '', author = '', ): Observable<number> {
     return this.httpClient
-      .get<Number>(`${this.api}/posts/count`)
+      .get<Number>(`${this.api}/posts/count`, {
+        params: new HttpParams()
+          .set('title', title)
+          .set('author', author)
+      })
       .pipe(retry(3), catchError(this.errorHandler));
   }
 
   findPosts(
+    title = '', 
+    author = '', 
     sortField = '',
     sortOrder = 'asc',
     pageNumber = 0,
@@ -52,6 +64,8 @@ export class RealPostsService extends PostsService {
     return this.httpClient
       .get<PostRaw[]>(`${this.api}/posts`, {
         params: new HttpParams()
+          .set('title', title)
+          .set('author', author)
           .set('_sort', sortField)
           .set('_order', sortOrder)
           .set('_page', pageNumber.toString())
