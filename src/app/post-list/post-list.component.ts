@@ -6,6 +6,8 @@ import { tap } from 'rxjs/operators';
 import { Post } from '../shared/post';
 import { PostsService } from '../shared/posts-service';
 import { PostListDatasource } from './post-list-datasource';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Author } from '../shared/author';
 
 @Component({
   selector: 'app-post-list',
@@ -17,11 +19,17 @@ export class PostListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   dataSource: PostListDatasource;
 
+  authors: Author[];
+
   displayedColumns = ["id", "title", "author", "created", "actions"];
 
-  constructor(private postsService: PostsService) { }
+  searchForm: FormGroup;
+
+  constructor(private postsService: PostsService, private fb: FormBuilder ) { }
 
   ngOnInit() {
+    this.postsService.getAuthors().subscribe(authors => this.authors = authors);
+    this.initForm();
     this.dataSource = new PostListDatasource(this.postsService);
     this.dataSource.loadPosts('', '', 'title', 'asc', 0, 10);
   }
@@ -52,5 +60,27 @@ export class PostListComponent implements OnInit, AfterViewInit {
       this.sort.direction, 
       this.paginator.pageIndex,
       this.paginator.pageSize);
+  }
+
+  submitForm() {
+    const formValue = this.searchForm.value;
+    this.dataSource.loadPosts(
+      formValue.title,
+      formValue.author,
+      this.sort.active, 
+      this.sort.direction, 
+      this.paginator.pageIndex,
+      this.paginator.pageSize);
+  }
+
+  private initForm() {
+    if (this.searchForm) {
+      return;
+    }
+
+    this.searchForm = this.fb.group({
+      title: [''],
+      author: ['']
+    });
   }
 }
